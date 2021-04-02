@@ -51,7 +51,7 @@ def make_chains(text_string):
         key = (words[i], words[i + 1])
         value = (words[i + 2])
 
-        if key == chains:
+        if key in chains:
             chains[key].append(value)
         else:
             chains[key] = []
@@ -62,9 +62,35 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
-    words = []
 
-   
+    # key = choice(list(chains.keys()))
+    # words = []
+    # key = (key[0], key[1])
+    # word = choice(chains[key])
+    # while word is not None:
+    #    print('word', word) 
+    #    print('key', key) 
+    #    print('words', words) 
+    #    words.append(word)
+    #    key = (key[1], word)
+    #    word = choice(chains[key])
+
+    # words = []
+    # create key variable
+    key = choice(list(chains.keys()))
+    words = [key[0], key[1]]
+    # create word variable
+    word = choice(chains[key])
+    
+    # while word is not None:
+    while word is not None:
+        # append word to words
+        # words.append(word)
+        # reassign key variable
+        key = (key[1], word)
+        words.append(word)
+        # reassign word as random
+        word = choice(chains[key])
 
     return ' '.join(words)
 
